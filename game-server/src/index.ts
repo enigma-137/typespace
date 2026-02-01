@@ -13,7 +13,6 @@ dotenv.config();
 const app = express();
 const httpServer = createServer(app);
 
-// Environment variables
 const PORT = process.env.PORT || 3001;
 const REDIS_URL = process.env.REDIS_URL; // e.g., redis://localhost:6379 OR undefined for local
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000").split(",");
