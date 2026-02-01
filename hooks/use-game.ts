@@ -116,12 +116,12 @@ export function useGame() {
 
   // Actions
   const createRoom = useCallback((playerName: string, mode: "ffa" | "coop" = "coop", difficulty: "easy" | "medium" | "hard" = "medium") => {
-    socketRef.current?.emit("createRoom", mode, difficulty) // Server will use socket ID as player ID
+    socketRef.current?.emit("createRoom", playerName, mode, difficulty) // Server will use socket ID as player ID
     // We update local name in query for reconnects, but simple impl for now
   }, [])
 
   const joinRoom = useCallback((roomId: string, playerName: string) => {
-    socketRef.current?.emit("joinRoom", roomId)
+    socketRef.current?.emit("joinRoom", roomId, playerName)
   }, [])
 
   const startGame = useCallback(() => {

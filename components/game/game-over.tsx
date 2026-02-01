@@ -66,7 +66,7 @@ export function GameOver({ players, winner, currentPlayerId, onRematch, onLeave,
           </CardTitle>
           {winnerName && (
             <p className="text-slate-400 mt-2">
-              {isWinner ? "You won!" : `${winnerName} wins!`}
+              {winnerName} won!
             </p>
           )}
         </CardHeader>

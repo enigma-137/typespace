@@ -55,18 +55,18 @@ io.on("connection", (socket) => {
   // Identification (Quick hack for user name, ideally connection params)
   const playerName = socket.handshake.query.name as string || "Anonymous";
 
-  socket.on("createRoom", (mode: "ffa" | "coop", difficulty: "easy" | "medium" | "hard" = "medium") => {
+  socket.on("createRoom", (playerName: string, mode: "ffa" | "coop", difficulty: "easy" | "medium" | "hard" = "medium") => {
     const roomId = Math.random().toString(36).substring(2, 8).toUpperCase();
     const room = new GameRoom(roomId, io, mode, difficulty);
     rooms.set(roomId, room);
     
     socket.join(roomId);
-    room.addPlayer(socket.id, playerName);
+    room.addPlayer(socket.id, playerName || "Guest");
     
     socket.emit("roomCreated", roomId);
   });
 
-  socket.on("joinRoom", (roomId: string) => {
+  socket.on("joinRoom", (roomId: string, playerName: string) => {
     const room = rooms.get(roomId);
     if (!room) {
       socket.emit("error", "Room not found");
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
     }
     
     socket.join(roomId);
-    room.addPlayer(socket.id, playerName);
+    room.addPlayer(socket.id, playerName || "Guest");
     socket.emit("roomJoined", roomId);
   });
 
