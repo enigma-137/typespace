@@ -15,7 +15,7 @@ export function Scoreboard({ players, currentPlayerId, teams, mode }: Scoreboard
   if (mode === "coop" && teams?.["bot"]) {
     sortedPlayers.push({
       id: "bot-ai",
-      name: "Bot AI",
+      name: "Spider(Bot)",
       score: teams["bot"].score,
       combo: 0,
       lives: 0,

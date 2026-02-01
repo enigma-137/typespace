@@ -45,7 +45,7 @@ export function GameOver({ players, winner, currentPlayerId, onRematch, onLeave,
   if (mode === "coop" && teams?.["bot"]) {
     sortedPlayers.push({
       id: "bot-ai",
-      name: "Bot AI",
+      name: "Spider(Bot)",
       score: teams["bot"].score,
       combo: 0,
       lives: 0,
