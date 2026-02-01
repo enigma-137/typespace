@@ -114,7 +114,7 @@ export function GameOver({ players, winner, currentPlayerId, onRematch, onLeave,
             </div>
           </div>
 
-          {/* Actions */}
+
           <div className="flex gap-3">
             <Button
               variant="outline"
