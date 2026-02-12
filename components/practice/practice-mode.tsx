@@ -22,19 +22,19 @@ export function PracticeMode() {
     const [gameState, setGameState] = useState<"menu" | "playing" | "results">("menu")
     const [startTime, setStartTime] = useState<number | null>(null)
 
-    // Stats
+
     const [correctChars, setCorrectChars] = useState(0)
     const [totalChars, setTotalChars] = useState(0)
     const [wpm, setWpm] = useState(0)
     const [accuracy, setAccuracy] = useState(100)
 
-    // Keyboard State
+
     const [activeKey, setActiveKey] = useState<string | null>(null)
     const [pressedKey, setPressedKey] = useState<string | null>(null)
 
     const inputRef = useRef<HTMLInputElement>(null)
 
-    // Load High Scores from LocalStorage
+    // Load High Scores
     const [highScores, setHighScores] = useState<Record<string, { wpm: number, accuracy: number }>>({})
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export function PracticeMode() {
         // Check if word is complete (space pressed)
         if (lastChar === " " && inputValue.length === currentWord.length) {
             // Only allow space if word is fully typed correctly?
-            // Let's keep it simple: if space is pressed, move to next word.
+            // if space is pressed, move to next word.
             // Actually, standard typing tests just verify word against input on space or completion.
 
             if (inputValue === currentWord) {
@@ -109,8 +109,8 @@ export function PracticeMode() {
         const endTime = Date.now()
         const durationMinutes = (endTime - (startTime || endTime)) / 60000
 
-        // Calculate final stats
-        // Note: This is an estimation. A better way would be to track every keystroke.
+
+        //This is an estimation. A better way would be to track every keystroke.
         const finalWpm = Math.round((correctChars / 5) / (durationMinutes || 0.01))
         const finalAccuracy = Math.round((correctChars / totalChars) * 100) || 0
 
@@ -131,7 +131,7 @@ export function PracticeMode() {
         }
     }
 
-    // Render Logic
+
 
     if (gameState === "menu") {
         return (
@@ -259,7 +259,7 @@ export function PracticeMode() {
     return (
         <div className="min-h-screen bg-slate-950 p-4 flex flex-col items-center justify-center space-y-8" onClick={() => inputRef.current?.focus()}>
             <div className="w-full max-w-4xl space-y-8">
-                {/* Header */}
+
                 <div className="flex items-center justify-between text-slate-400">
                     <Button variant="ghost" size="sm" onClick={() => setGameState("menu")}>
                         <ChevronLeft className="mr-2 h-4 w-4" /> Quit
@@ -272,7 +272,7 @@ export function PracticeMode() {
                 {/* Word Display */}
                 <div className="text-center space-y-2 min-h-[120px] flex flex-col items-center justify-center">
                     <div className="text-6xl font-mono relative">
-                        {/* Letters */}
+
                         {currentWord.split('').map((char, idx) => {
                             let color = "text-slate-600"
                             if (idx < inputValue.length) {
