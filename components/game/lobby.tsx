@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import type { Player } from "@/lib/game-types"
+import Link from "next/link"
 
 interface LobbyProps {
   roomId: string | null
@@ -139,6 +140,16 @@ export function Lobby({
               >
                 Join Room
               </Button>
+
+              <Link href="/practice" className="w-full block">
+                <Button
+                  variant="ghost"
+                  className="w-full text-slate-400 hover:text-white hover:bg-slate-800 mt-2"
+                  size="lg"
+                >
+                  Practice Mode
+                </Button>
+              </Link>
             </CardContent>
           </Card>
 
@@ -187,8 +198,8 @@ export function Lobby({
                     type="button"
                     onClick={() => setSelectedMode("coop")}
                     className={`px-3 py-2 rounded text-sm font-medium border transition-colors ${selectedMode === "coop"
-                        ? "bg-cyan-950 border-cyan-500 text-cyan-400"
-                        : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
+                      ? "bg-cyan-950 border-cyan-500 text-cyan-400"
+                      : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
                       }`}
                   >
                     Co-op vs Bot
@@ -197,8 +208,8 @@ export function Lobby({
                     type="button"
                     onClick={() => setSelectedMode("ffa")}
                     className={`px-3 py-2 rounded text-sm font-medium border transition-colors ${selectedMode === "ffa"
-                        ? "bg-emerald-950 border-emerald-500 text-emerald-400"
-                        : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
+                      ? "bg-emerald-950 border-emerald-500 text-emerald-400"
+                      : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
                       }`}
                   >
                     Solo / PvP
@@ -216,8 +227,8 @@ export function Lobby({
                         type="button"
                         onClick={() => setSelectedDifficulty(diff)}
                         className={`px-2 py-1.5 rounded text-xs font-medium border uppercase transition-colors ${selectedDifficulty === diff
-                            ? "bg-slate-100 text-slate-900 border-slate-100"
-                            : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
+                          ? "bg-slate-100 text-slate-900 border-slate-100"
+                          : "bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700"
                           }`}
                       >
                         {diff}
