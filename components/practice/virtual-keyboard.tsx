@@ -19,7 +19,7 @@ export function VirtualKeyboard({ activeKey, pressedKey }: VirtualKeyboardProps)
         const isActive = activeKey?.toLowerCase() === key.toLowerCase()
         const isPressed = pressedKey?.toLowerCase() === key.toLowerCase()
 
-        // Special handling for Space
+
         if (key === "Space") {
             if (activeKey === " ") return "bg-cyan-500 text-white shadow-[0_0_10px_rgba(6,182,212,0.5)]"
             if (pressedKey === " ") return "bg-slate-600 scale-95"
